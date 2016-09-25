@@ -2,18 +2,20 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<style>
-			canvas#indicator {
-				border: solid 3px;
-			}
-		</style>
+		<link rel="stylesheet" href="styles.css">
 	</head>
 
 	<body>
 		<canvas id="indicator">
 			Your browser does not support canvas.
 		</canvas>
-		<script src="main.js">
-		</script>
+
+		<label for="roll">Roll:</label>
+		<input id="roll" name="roll">
+		<br />
+		<label for="pitch">Pitch:</label>
+		<input id="pitch" name="pitch">
+
+		<script src="main.js"></script>
 	</body>
 </html>

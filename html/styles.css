@@ -1,0 +1,5 @@
+canvas#indicator {
+	border: solid 1px black;
+	float: left;
+	margin-right: 20px;
+}
