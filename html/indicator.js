@@ -33,8 +33,6 @@ let indicator = (function() {
 
 		ctx.translate(canvas.width / 2, canvas.height / 2);
 
-		ctx.rotate(-roll);
-
 		let p = pitch;
 		if(pitch > Math.PI / 2) {
 			ctx.rotate(Math.PI);
@@ -44,6 +42,8 @@ let indicator = (function() {
 			ctx.rotate(Math.PI);
 			p = -Math.PI - p;
 		}
+
+		ctx.rotate(-roll);
 		ctx.translate(0, p * canvas.height / Math.PI);
 
 		// horizon
@@ -77,12 +77,13 @@ let indicator = (function() {
 		// plane
 		ctx.strokeStyle = 'red';
 		ctx.lineWidth = 3;
+
 		ctx.beginPath();
-		ctx.moveTo(canvas.width / 2, 0);
-		ctx.lineTo(20, 0);
 		ctx.moveTo(-canvas.width / 2, 0);
 		ctx.lineTo(-20, 0);
-		ctx.arc(0, 0, 20, -Math.PI, 0);
+		ctx.moveTo(canvas.width / 2, 0);
+		ctx.lineTo(20, 0);
+		ctx.arc(0, 0, 20, 0, Math.PI);
 		ctx.stroke();
 
 		ctx.resetTransform();
