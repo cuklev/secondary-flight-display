@@ -55,10 +55,14 @@ let indicator = (function() {
 		// scale
 		ctx.strokeStyle = 'yellow';
 		ctx.lineWidth = 1;
+		ctx.fillStyle = 'yellow';
+		ctx.font = '16px sans-serif';
+
 		ctx.beginPath();
 		for(let y = -90; y <= 90; y += 10) {
 			ctx.moveTo(-40, y * canvas.height / 180);
 			ctx.lineTo(40, y * canvas.height / 180);
+			ctx.fillText(-y, 50, y * canvas.height / 180 + 4);
 		}
 		for(let y = -25; y <= 25; y += 10) {
 			ctx.moveTo(-15, y * canvas.height / 180);
