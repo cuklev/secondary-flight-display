@@ -52,7 +52,7 @@ let indicator = (function() {
 		ctx.fillStyle = '#523108'; // brown
 		ctx.fillRect(-canvas.width, 0, canvas.width * 2, canvas.height * 2);
 
-		// scale
+		// pitch scale
 		ctx.strokeStyle = 'yellow';
 		ctx.lineWidth = 1;
 		ctx.fillStyle = 'yellow';
@@ -74,8 +74,29 @@ let indicator = (function() {
 
 		ctx.translate(canvas.width / 2, canvas.height / 2);
 
+		// roll scale
+		ctx.strokeStyle = 'white';
+		ctx.fillStyle = 'white';
+
+		ctx.beginPath();
+		ctx.rotate(17 * Math.PI / 36);
+		for(let i = 5; i < 180; i += 5) {
+			ctx.moveTo(0, 250);
+			if(i % 15 === 0) {
+				ctx.lineTo(0, 220);
+				ctx.fillText((i > 90 ? 180 - i : i), -10, 270);
+			}
+			else {
+				ctx.lineTo(0, 230);
+			}
+
+			ctx.rotate(-Math.PI / 36);
+		}
+		ctx.stroke();
+
+		ctx.rotate(Math.PI / 2);
+
 		// plane
-		ctx.strokeStyle = 'red';
 		ctx.lineWidth = 3;
 
 		ctx.beginPath();
