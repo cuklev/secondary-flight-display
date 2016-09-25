@@ -17,14 +17,12 @@ let indicator = (function() {
 	let roll = 0;
 	let pitch = 0;
 
-	function update(r, p) {
-		roll = r * Math.PI / 180;
-		pitch = p * Math.PI / 180;
+	function updateRoll(v) {
+		roll = v * Math.PI / 180;
 	}
-
-	(function update() {
-		setTimeout(update, SPEED);
-	}());
+	function updatePitch(v) {
+		pitch = v * Math.PI / 180;
+	}
 
 	(function draw() {
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -44,6 +42,7 @@ let indicator = (function() {
 	}());
 
 	return {
-		update
+		updateRoll,
+		updatePitch
 	};
 }());
