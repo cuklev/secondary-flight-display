@@ -74,10 +74,10 @@ let indicator = (function() {
 		ctx.strokeStyle = 'red';
 		ctx.lineWidth = 3;
 		ctx.beginPath();
-		ctx.moveTo(-canvas.width / 2, 0);
-		ctx.lineTo(-20, 0);
 		ctx.moveTo(canvas.width / 2, 0);
 		ctx.lineTo(20, 0);
+		ctx.moveTo(-canvas.width / 2, 0);
+		ctx.lineTo(-20, 0);
 		ctx.arc(0, 0, 20, -Math.PI, 0);
 		ctx.stroke();
 
