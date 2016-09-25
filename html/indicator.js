@@ -18,9 +18,13 @@ let indicator = (function() {
 	let pitch = 0;
 
 	function updateRoll(v) {
+		if(v > 180) v -= 360;
+		else if(v < -180) v += 360;
 		roll = v * Math.PI / 180;
 	}
 	function updatePitch(v) {
+		if(v > 180) v -= 360;
+		else if(v < -180) v += 360;
 		pitch = v * Math.PI / 180;
 	}
 
@@ -30,13 +34,23 @@ let indicator = (function() {
 		ctx.translate(canvas.width / 2, canvas.height / 2);
 
 		ctx.rotate(-roll);
-		ctx.translate(0, pitch * canvas.height / Math.PI);
+
+		let p = pitch;
+		if(pitch > Math.PI / 2) {
+			ctx.rotate(Math.PI);
+			p = Math.PI - p;
+		}
+		else if(-pitch > Math.PI / 2) {
+			ctx.rotate(Math.PI);
+			p = -Math.PI - p;
+		}
+		ctx.translate(0, p * canvas.height / Math.PI);
 
 		// horizon
 		ctx.fillStyle = '#004AFF'; // blue
-		ctx.fillRect(-canvas.width, -canvas.height, canvas.width * 2, canvas.height);
+		ctx.fillRect(-canvas.width, -canvas.height * 2, canvas.width * 2, canvas.height * 2);
 		ctx.fillStyle = '#523108'; // brown
-		ctx.fillRect(-canvas.width, 0, canvas.width * 2, canvas.height);
+		ctx.fillRect(-canvas.width, 0, canvas.width * 2, canvas.height * 2);
 
 		// scale
 		ctx.strokeStyle = 'yellow';
@@ -64,7 +78,7 @@ let indicator = (function() {
 		ctx.lineTo(-20, 0);
 		ctx.moveTo(canvas.width / 2, 0);
 		ctx.lineTo(20, 0);
-		ctx.arc(0, 0, 20, 0, Math.PI);
+		ctx.arc(0, 0, 20, -Math.PI, 0);
 		ctx.stroke();
 
 		ctx.resetTransform();
