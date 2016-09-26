@@ -18,13 +18,9 @@ let indicator = (function() {
 	let pitch = 0;
 
 	function updateRoll(v) {
-		if(v > 180) v -= 360;
-		else if(v < -180) v += 360;
 		roll = v * Math.PI / 180;
 	}
 	function updatePitch(v) {
-		if(v > 180) v -= 360;
-		else if(v < -180) v += 360;
 		pitch = v * Math.PI / 180;
 	}
 

@@ -3,8 +3,22 @@
 	const pitchInput = document.querySelector('#pitch-input');
 
 	const DELTA = 1;
+
 	let roll = 0;
 	let pitch = 0;
+
+	function updateRoll(x) {
+		roll += x;
+		if(roll > 180) roll -= 360;
+		else if(-roll > 180) roll += 360;
+		rollInput.value = roll;
+	}
+	function updatePitch(x) {
+		pitch += x;
+		if(pitch > 180) pitch -= 360;
+		else if(-pitch > 180) pitch += 360;
+		pitchInput.value = roll;
+	}
 
 	rollInput.addEventListener('keyup', function(e) {
 		roll = +rollInput.value;
@@ -17,24 +31,20 @@
 
 	window.addEventListener('keyup', function(e) {
 		if(e.which === 37) { // left
-			roll -= DELTA;
+			updateRoll(-DELTA);
 			indicator.updateRoll(roll);
-			rollInput.value = roll;
 		}
 		else if(e.which === 39) { // right
-			roll += DELTA;
+			updateRoll(DELTA);
 			indicator.updateRoll(roll);
-			rollInput.value = roll;
 		}
 		else if(e.which === 38) { // up
-			pitch += DELTA;
+			updatePitch(DELTA);
 			indicator.updatePitch(pitch);
-			pitchInput.value = pitch;
 		}
-		else if(e.which === 40) { // 40
-			pitch -= DELTA;
+		else if(e.which === 40) { // down
+			updatePitch(-DELTA);
 			indicator.updatePitch(pitch);
-			pitchInput.value = pitch;
 		}
 	});
 }());
