@@ -17,7 +17,7 @@
 		pitch += x;
 		if(pitch > 180) pitch -= 360;
 		else if(-pitch > 180) pitch += 360;
-		pitchInput.value = roll;
+		pitchInput.value = pitch;
 	}
 
 	rollInput.addEventListener('keyup', function(e) {
